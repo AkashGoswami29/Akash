@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish 3D Portfolio</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #1a1a1a;
+            color: #fff;
+            perspective: 1200px;
+        }
+
+        /* Main Container */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Card */
+        .profile-card {
+            background: linear-gradient(145deg, #1e1e1e, #2b2b2b);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .profile-card:hover {
+            transform: rotateY(15deg);
+        }
+
+        /* Profile Image */
+        .profile-image img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover .profile-image img {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        /* Personal Details */
+        .title {
+            font-size: 2.2em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #ff4081;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            font-size: 1.1em;
+            color: #aaa;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        /* Hobbies and Interests */
+        .section-title {
+            font-size: 1.5em;
+            margin-top: 30px;
+            color: #ff5722;
+        }
+
+        .list-items {
+            list-style: none;
+            margin: 10px 0;
+            color: #bbb;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #333;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.2em;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #ff5722;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-card">
+            <div class="profile-image">
+                <img src="https://via.placeholder.com/150" alt="Profile Image">
+            </div>
+            <h1 class="title">Your Name</h1>
+            <p class="subtitle">With my girlfriend, <strong>Her Name</strong></p>
+            <p class="description">I’m passionate about technology and design, specializing in web development and creative projects. When I’m not coding, you’ll find me exploring new places, capturing moments, and spending quality time with my loved ones.</p>
+
+            <h2 class="section-title">Hobbies & Interests</h2>
+            <ul class="list-items">
+                <li>Photography</li>
+                <li>Traveling</li>
+                <li>Gaming</li>
+                <li>Reading</li>
+            </ul>
+
+            <h2 class="section-title">Social Media</h2>
+            <div class="social-icons">
+                <a href="#" target="_blank">&#xf09a;</a> <!-- Facebook -->
+                <a href="#" target="_blank">&#xf099;</a> <!-- Twitter -->
+                <a href="#" target="_blank">&#xf16d;</a> <!-- Instagram -->
+                <a href="#" target="_blank">&#xf0e1;</a> <!-- LinkedIn -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 3D tilt effect on mouse move
+        document.querySelector('.profile-card').addEventListener('mousemove', (e) => {
+            const card = e.currentTarget;
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            card.style.transform = `rotateY(${x / 20}deg) rotateX(${y / 20}deg)`;
+        });
+
+        document.querySelector('.profile-card').addEventListener('mouseleave', (e) => {
+            e.currentTarget.style.transform = `rotateY(0) rotateX(0)`;
+        });
+    </script>
+</body>
+</html>
